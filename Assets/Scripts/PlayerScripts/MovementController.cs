@@ -30,8 +30,8 @@ public class MovementController : MonoBehaviour
     public readonly int movementYHash = Animator.StringToHash("MovementY");
     public readonly int isJumpingHash = Animator.StringToHash("isJumping");
     public readonly int isRunningHash = Animator.StringToHash("isRunning");
-    public readonly int isFiringHash = Animator.StringToHash("IsFiring");
-    public readonly int isReloadingHash = Animator.StringToHash("IsReloading");
+    //public readonly int isFiringHash = Animator.StringToHash("IsFiring");
+    //public readonly int isReloadingHash = Animator.StringToHash("IsReloading");
 
     private void Awake()
     {
@@ -87,7 +87,7 @@ public class MovementController : MonoBehaviour
 
         transform.position += movementDirection;
 
-        print(rigidbody.velocity.y);
+        //print(rigidbody.velocity.y);
     }
 
     public void OnMovement(InputValue value)
@@ -125,17 +125,17 @@ public class MovementController : MonoBehaviour
         playerController.isAiming = value.isPressed;
     }
 
-    public void OnFire(InputValue value)
-    {
-        playerController.isFiring = value.isPressed;
-        playerAnimator.SetBool(isFiringHash, playerController.isFiring);
-    }
+    //public void OnFire(InputValue value)
+    //{
+    //    playerController.isFiring = value.isPressed;
+    //    playerAnimator.SetBool(isFiringHash, playerController.isFiring);
+    //}
 
-    public void OnReload(InputValue value)
-    {
-        playerController.isReloading = value.isPressed;
-        playerAnimator.SetBool(isReloadingHash, playerController.isReloading);
-    }
+    //public void OnReload(InputValue value)
+    //{
+    //    playerController.isReloading = value.isPressed;
+    //    playerAnimator.SetBool(isReloadingHash, playerController.isReloading);
+    //}
 
 
     private void OnCollisionEnter(Collision collision)

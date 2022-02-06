@@ -4251,6 +4251,7 @@ MonoBehaviour:
   weaponToSpawn: {fileID: 8225309174913698490, guid: 17870128d43b4cf4c9f9c4e38984e186, type: 3}
   crossHairImage: {fileID: 0}
   weaponSocketLocation: {fileID: 2122306983}
+  gripIKSocketLocation: {fileID: 0}
 --- !u!137 &937843376807317983
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -4643,11 +4644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7239030393664199959, guid: 17870128d43b4cf4c9f9c4e38984e186, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7619927
+      value: 2.263
       objectReference: {fileID: 0}
     - target: {fileID: 7239030393664199959, guid: 17870128d43b4cf4c9f9c4e38984e186, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.07
+      value: 6.722
       objectReference: {fileID: 0}
     - target: {fileID: 7239030393664199959, guid: 17870128d43b4cf4c9f9c4e38984e186, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4680,10 +4681,6 @@ PrefabInstance:
     - target: {fileID: 8225309174913698490, guid: 17870128d43b4cf4c9f9c4e38984e186, type: 3}
       propertyPath: m_Name
       value: AK47
-      objectReference: {fileID: 0}
-    - target: {fileID: 8225309174913698490, guid: 17870128d43b4cf4c9f9c4e38984e186, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17870128d43b4cf4c9f9c4e38984e186, type: 3}
