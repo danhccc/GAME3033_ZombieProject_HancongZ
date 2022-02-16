@@ -32,6 +32,7 @@ public class WeaponHolder : MonoBehaviour
 
         equippedWeapon = spawnWeapon.GetComponent<WeaponComponent>();
         equippedWeapon.Initialized(this);
+        PlayerEvents.InvokeOnWeaponEquipped(equippedWeapon);
         gripIKSocketLocation = equippedWeapon.gripLocation;
     }
 
@@ -67,7 +68,10 @@ public class WeaponHolder : MonoBehaviour
     void StartFiring()
     {
         if (equippedWeapon.weaponStats.bulletsInClip <= 0)
+        {
+            StartReloading();
             return;
+        }
 
         playerAnimator.SetBool(isFiringHash, true);
         playerController.isFiring = true;
@@ -76,6 +80,11 @@ public class WeaponHolder : MonoBehaviour
 
     void StopFiring()
     {
+        if (equippedWeapon.weaponStats.bulletsInClip <= 0)
+        {
+            return;
+        }
+
         playerAnimator.SetBool(isFiringHash, false);
         playerController.isFiring = false;
         equippedWeapon.StopFiringWeapon();
@@ -84,12 +93,38 @@ public class WeaponHolder : MonoBehaviour
     public void OnReload(InputValue value)
     {
         playerController.isReloading = value.isPressed;
-        playerAnimator.SetBool(isReloadingHash, playerController.isReloading);
-        playerAnimator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
+        StartReloading();
     }
 
     public void StartReloading()
     {
+        if (playerController.isFiring)
+        {
+            StopFiring();
+        }
+        if (equippedWeapon.weaponStats.totalBullets <= 0)
+        { 
+            return;
+        }
 
+        // Refill ammo here
+        equippedWeapon.StartReloading();
+        playerController.isReloading = true;
+        playerAnimator.SetBool(isReloadingHash, true);
+
+        InvokeRepeating(nameof(StopReloading), 0, 0.1f);
+    }
+
+    public void StopReloading()
+    {
+        if (playerAnimator.GetBool(isReloadingHash))
+        {
+            return;
+        }
+
+        playerController.isReloading = false;
+        playerAnimator.SetBool(isReloadingHash, false);
+        equippedWeapon.StopReloading();
+        CancelInvoke(nameof(StopReloading));
     }
 }
