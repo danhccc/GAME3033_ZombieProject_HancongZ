@@ -116,7 +116,7 @@ public class MovementController : MonoBehaviour
     public void OnLook(InputValue value)
     {
         lookInput = value.Get<Vector2>();
-        // If we aim up, down, adjust animations to havew a mask that will let us properly animate aim
+        // If we aim up, down, adjust animations to have a mask that will let us properly animate aim
 
     }
 
@@ -145,4 +145,5 @@ public class MovementController : MonoBehaviour
         playerController.isJumping = false;
         playerAnimator.SetBool(isJumpingHash, false);
     }
+
 }
