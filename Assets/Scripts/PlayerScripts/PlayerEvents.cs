@@ -13,4 +13,13 @@ public class PlayerEvents : MonoBehaviour
     {
         OnWeaponEquipped?.Invoke(weaponComponent);
     }
+
+    public delegate void OnHealthInitializeEvent(HealthComponent healthComponent);
+
+    public static event OnHealthInitializeEvent OnHealthInitialize;
+
+    public static void InvokeOnHealthInitialized(HealthComponent healthComponent)
+    {
+        OnHealthInitialize?.Invoke(healthComponent);
+    }
 }
