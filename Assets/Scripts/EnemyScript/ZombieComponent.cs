@@ -21,12 +21,13 @@ public class ZombieComponent : MonoBehaviour
 
     private void Start()
     {
+        followTarget = GameObject.FindGameObjectWithTag("Player");
         Initialize(followTarget);
     }
 
     public void Initialize(GameObject _followTarget)
     {
-        // followTarget = _followTarget;
+        followTarget = _followTarget;
         ZombieIdleState idleState = new ZombieIdleState(this, zombieStateMachine);
         zombieStateMachine.AddState(ZombieStateType.Idling, idleState);
 
